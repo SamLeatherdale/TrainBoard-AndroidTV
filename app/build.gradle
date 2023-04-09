@@ -1,0 +1,61 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def envFile = rootProject.file("env.properties")
+def env = new Properties()
+env.load(new FileInputStream(envFile))
+
+ext {
+    key_store_file = env['KEY_STORE_FILE']
+    key_store_password = env['KEY_STORE_PASSWORD']
+    key_alias = env['KEY_STORE_ALIAS']
+    key_password = env['KEY_PASSWORD']
+}
+
+android {
+    namespace 'com.samleatherdale.trainboard'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.samleatherdale.trainboard"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(key_store_file)
+            storePassword key_store_password
+            keyAlias key_alias
+            keyPassword key_password
+        }
+    }
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            buildConfigField 'String', 'APP_URL', '"https://trainboard.samleatherdale.com/"'
+            buildConfigField 'Boolean', 'DEBUG_WEBVIEW', 'false'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            buildConfigField 'String', 'APP_URL', '"https://0973-159-196-170-200.ngrok-free.app/"'
+            buildConfigField 'Boolean', 'DEBUG_WEBVIEW', 'true'
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
+}
