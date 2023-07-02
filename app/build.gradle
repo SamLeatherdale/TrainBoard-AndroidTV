@@ -18,6 +18,11 @@ android {
     namespace 'com.samleatherdale.trainboard'
     compileSdk 33
 
+    compileOptions {
+        sourceCompatibility = 17
+        targetCompatibility = 17
+    }
+
     defaultConfig {
         applicationId "com.samleatherdale.trainboard"
         minSdk 26
@@ -55,7 +60,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.leanback:leanback:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
 }
