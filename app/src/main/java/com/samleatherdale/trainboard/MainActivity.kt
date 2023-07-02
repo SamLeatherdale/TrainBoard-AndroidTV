@@ -2,6 +2,7 @@ package com.samleatherdale.trainboard
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.WindowManager.LayoutParams
 import android.webkit.WebView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
@@ -13,6 +14,8 @@ class MainActivity : FragmentActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.addFlags(LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         webView = WebView(this@MainActivity)
         webView.settings.domStorageEnabled = true
