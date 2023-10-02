@@ -16,7 +16,7 @@ ext {
 
 android {
     namespace 'com.samleatherdale.trainboard'
-    compileSdk 33
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility = 17
@@ -26,9 +26,9 @@ android {
     defaultConfig {
         applicationId "com.samleatherdale.trainboard"
         minSdk 26
-        targetSdk 33
-        versionCode 2
-        versionName "1.1.0"
+        targetSdk 34
+        versionCode 3
+        versionName "1.1.1"
     }
 
     signingConfigs {
@@ -52,15 +52,14 @@ android {
         debug {
             applicationIdSuffix ".debug"
             debuggable true
-            buildConfigField 'String', 'APP_URL', '"https://0973-159-196-170-200.ngrok-free.app/"'
+            buildConfigField 'String', 'APP_URL', '"https://trainboard.samleatherdale.com/"'
             buildConfigField 'Boolean', 'DEBUG_WEBVIEW', 'true'
         }
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.leanback:leanback:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
+    implementation 'androidx.appcompat:appcompat:1.7.0-alpha03'
 }
